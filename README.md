@@ -627,37 +627,7 @@ Nada aqui é considerado irrelevante — apenas não cabe no escopo desta etapa.
 
 ---
 
-# 7. Rubrica
-
-Base **100 pontos**. Aprovação recomendada a partir de **70**, desde que nenhum bloqueador seja acionado.
-
-| Área | Pontos | Evidências |
-|---|---:|---|
-| Segurança do conteúdo de terceiros | 25 | XXE comprovado por teste (12); saneamento de link e renderização inerte (8); allowlist de símbolo (5) |
-| Resiliência e cache | 20 | Cache compartilhado por operação (8); emergência e `freshness` (6); resfriamento (3); falha parcial (3) |
-| Correção dos dois widgets | 20 | Normalização da B3 (8); treemap por setor e escala de cor (6); notícias mescladas e deduplicadas (4); propagação do símbolo (2) |
-| PHP, API e sessão | 15 | Proteção no backend e ordem sessão→validação (7); contratos e códigos HTTP (5); disciplina do registro de auditoria (3) |
-| Testes | 15 | Dez casos backend (10); dois casos frontend (3); suíte offline e determinística (2) |
-| Entrega e documentação | 5 | Compose em clone limpo (3); README reproduzível (2) |
-| **Total** | **100** | |
-
-### Perguntas úteis
-
-- O dado é o mesmo para todo mundo: por que exigir login para ver o heatmap?
-- Por que o cache não deve ser chaveado por usuário, mesmo com todos os endpoints autenticados?
-- Um anônimo manda `?symbol=<script>`. Você responde `401` ou `422`? Por quê?
-- O que exatamente `LIBXML_NOENT` faria com um feed malicioso?
-- Como você provou, em teste, que a entidade externa não foi resolvida?
-- Por que um item com link inseguro continua na lista em vez de ser descartado?
-- Como a sua allowlist trata `B3SA3.SA` e `TAEE11.SA`? E `PETR3F.SA`?
-- O que acontece com o widget de notícias se o sufixo `.SA` não for aplicado no heatmap?
-- Quando responder `503` é correto, e quando é defeito?
-- Por que o health check não deve consultar o provedor externo?
-- Qual teste trouxe mais confiança e qual risco ficou sem cobertura?
-
----
-
-# 8. Orientação ao avaliador
+# 7. Orientação ao avaliador
 
 Priorize, nesta ordem:
 
