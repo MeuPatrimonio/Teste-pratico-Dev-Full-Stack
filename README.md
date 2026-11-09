@@ -641,40 +641,6 @@ Base **100 pontos**. Aprovação recomendada a partir de **70**, desde que nenhu
 | Entrega e documentação | 5 | Compose em clone limpo (3); README reproduzível (2) |
 | **Total** | **100** | |
 
-## 7.1 Bloqueadores
-
-| Situação | Consequência |
-|---|---|
-| XXE explorável no parsing de RSS | Reprovação |
-| Segredo real versionado | Reprovação |
-| Senha sem hash seguro | Reprovação |
-| Link `javascript:` renderizado como âncora clicável | Nota máxima 59 |
-| Widget acessível sem sessão, ou protegido só no frontend | Nota máxima 59 |
-| Navegador chamando provedor externo diretamente | Nota máxima 59 |
-| Símbolo interpolado em URL sem allowlist | Nota máxima 59 |
-| Aplicação não sobe em clone limpo | Nota máxima 59 |
-| Ausência total de testes backend | Nota máxima 49 |
-| Suíte dependente de provedor externo | Nota máxima 69 |
-| Mercado fracionário não filtrado, duplicando células | Nota máxima 69 |
-| Ticker sem `.SA`, quebrando a integração entre os widgets | Nota máxima 69 |
-| Auditoria contendo título, URL de manchete, cotação, IP ou cookie | Nota máxima 69 |
-| Cache chaveado por usuário ou sessão | Perda dos pontos de resiliência |
-| `503` havendo cache de emergência utilizável | Perda dos pontos de resiliência |
-| Health check dependente de provedor externo | Perda dos pontos de entrega |
-
-Os tetos são aplicados após a soma. O mesmo defeito perde os pontos dos critérios afetados, sem segundo desconto além do teto.
-
----
-
-# 8. Entrevista técnica
-
-1. **Demonstração** — o candidato faz login, executa os dois widgets e força um cenário de degradação.
-2. **Segurança** — explica a defesa contra XXE, o saneamento de link e a allowlist de símbolo.
-3. **Resiliência** — explica a chave de cache, a janela de resfriamento e a diferença entre `cached` e `stale`.
-4. **Domínio** — explica a normalização da B3 e o que quebra sem ela.
-5. **Incidente** — o heatmap ficou vazio para todos os usuários e a tabela `provider_calls` mostra aumento de `failed` com `rate_limited`. Como diagnosticar e mitigar.
-6. **O que ficou fora** — como estruturaria papéis e área administrativa, CI, fila e observabilidade, e o que faria diferente com mais tempo.
-
 ### Perguntas úteis
 
 - O dado é o mesmo para todo mundo: por que exigir login para ver o heatmap?
@@ -691,7 +657,7 @@ Os tetos são aplicados após a soma. O mesmo defeito perde os pontos dos crité
 
 ---
 
-# 9. Orientação ao avaliador
+# 8. Orientação ao avaliador
 
 Priorize, nesta ordem:
 
