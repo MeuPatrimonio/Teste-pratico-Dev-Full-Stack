@@ -1192,3 +1192,4 @@ Atenção especial a duas armadilhas frequentes neste desafio:
 - **Parsing “que funciona”.** Um feed bem formado passa em qualquer implementação. A diferença entre um candidato que entende o risco e um que não entende só aparece nas fixtures maliciosas.
 - **Degradação invisível.** Uma aplicação que responde `200` com lista vazia quando o provedor caiu parece correta na demonstração e é inútil em produção. Verifique `freshness`, o cabeçalho e o erro específico.
 # Teste-pr-tico-Desenvolvedor-a-Full-Stack-
+# Teste-pr-tico-Desenvolvedor-a-Full-Stack-
