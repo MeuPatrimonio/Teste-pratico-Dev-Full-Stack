@@ -1,4 +1,4 @@
-# Teste prático — Desenvolvedor(a) Full Stack
+# Teste prático Desenvolvedor(a) Full Stack
 
 ## Widgets de mercado: Heatmap setorial e Notícias por ativo
 
@@ -6,7 +6,7 @@
 >
 > Backend obrigatório: PHP 8.3+
 >
-> Funcionalidade-base: dois widgets de um terminal financeiro — `heatmap` e `news`
+> Funcionalidade-base: dois widgets de um terminal financeiro `heatmap` e `news` do repositorio 
 
 ---
 
@@ -16,30 +16,30 @@ As imagens abaixo são a **implementação de referência**. O candidato deve re
 
 ![Heatmap do mercado brasileiro ao lado do widget de notícias no modo por ativo, exibindo manchetes de PETR3.SA](docs/screenshots/heatmap-br-news-symbol.png)
 
-*Figura 1 — Heatmap com o mercado `BR` selecionado e notícias no modo por ativo. O título do widget acompanha o símbolo ativo (`NEWS PETR3.SA`), que foi definido ao clicar em Petrobras no heatmap.*
+*Figura 1 Heatmap com o mercado `BR` selecionado e notícias no modo por ativo. O título do widget acompanha o símbolo ativo (`NEWS PETR3.SA`), que foi definido ao clicar em Petrobras no heatmap.*
 
 ![Mesmo heatmap com o widget de notícias no modo GLOBAL, exibindo manchetes de mercado de diversos veículos](docs/screenshots/heatmap-br-news-global.png)
 
-*Figura 2 — Mesmo heatmap, notícias no modo `GLOBAL`. O símbolo ativo agora é `ABEV3.SA`, mas o modo global ignora o símbolo e devolve manchetes de mercado. Veículos diferentes (WSJ, Bloomberg, Investopedia, The Motley Fool) comprovam a mescla de fontes.*
+*Figura 2 Mesmo heatmap, notícias no modo `GLOBAL`. O símbolo ativo agora é `ABEV3.SA`, mas o modo global ignora o símbolo e devolve manchetes de mercado. Veículos diferentes (WSJ, Bloomberg, Investopedia, The Motley Fool) comprovam a mescla de fontes.*
 
 ### O que as imagens comprovam
 
 | Elemento visível | Requisito correspondente |
 |---|---|
-| Botões `US` `EU` `BR` no heatmap | Seleção de mercado — seção 2.2 |
-| Retângulos agrupados sob rótulos de setor (`FINANCE`, `ENERGY MINERALS`, …) | Agrupamento por setor — 2.2.1 |
-| `PETR3.SA` ocupando a maior área de Energy Minerals | Área proporcional ao valor de mercado — 2.2.2 |
-| Verde em `+2,64%`, vermelho em `-3,11%`, tons saturando perto de ±3% | Escala divergente limitada — 2.2.3 |
-| Sufixo `.SA` em todos os tickers | Normalização de símbolo B3 — 2.4 |
-| Rótulo `TECHNOLOGY SERVI…` cortado na própria coluna | Recorte do rótulo por coluna — 2.2.6 |
-| Retângulos pequenos sem texto algum | Texto condicional ao espaço — 2.2.7 |
-| Título do widget mudando de `PETR3.SA` para `ABEV3.SA` entre as figuras | Clique no heatmap propaga o símbolo ativo — 2.2.8 |
-| Botões `PETR3.SA` `GLOBAL` `BR` nas notícias | Três modos — 2.3 |
-| Veículo e data/hora sob cada manchete | Metadados do item — 2.3.6 |
+| Botões `US` `EU` `BR` no heatmap | Seleção de mercado seção 2.2 |
+| Retângulos agrupados sob rótulos de setor (`FINANCE`, `ENERGY MINERALS`, …) | Agrupamento por setor 2.2.1 |
+| `PETR3.SA` ocupando a maior área de Energy Minerals | Área proporcional ao valor de mercado 2.2.2 |
+| Verde em `+2,64%`, vermelho em `-3,11%`, tons saturando perto de ±3% | Escala divergente limitada 2.2.3 |
+| Sufixo `.SA` em todos os tickers | Normalização de símbolo B3 2.4 |
+| Rótulo `TECHNOLOGY SERVI…` cortado na própria coluna | Recorte do rótulo por coluna 2.2.6 |
+| Retângulos pequenos sem texto algum | Texto condicional ao espaço 2.2.7 |
+| Título do widget mudando de `PETR3.SA` para `ABEV3.SA` entre as figuras | Clique no heatmap propaga o símbolo ativo 2.2.8 |
+| Botões `PETR3.SA` `GLOBAL` `BR` nas notícias | Três modos 2.3 |
+| Veículo e data/hora sob cada manchete | Metadados do item 2.3.6 |
 
 ---
 
-## Endpoints — referência rápida
+## Endpoints referência rápida
 
 > **Leia esta seção antes de começar.** Ela resume o que chamar e o que expor. As regras completas de validação, cache, degradação e segurança estão nas seções 2.4, 5.1 e 5.2 e prevalecem sobre este resumo.
 
@@ -59,7 +59,7 @@ Os endpoints 1 e 2 exigem `Referer` e `Origin` de `https://www.tradingview.com`;
 **Comandos para conferir cada provedor antes de escrever código:**
 
 ```bash
-# 1/2 — Heatmap BR (troque brazil por america para o mercado US)
+# 1/2 Heatmap BR (troque brazil por america para o mercado US)
 curl -sS -X POST 'https://scanner.tradingview.com/brazil/scan' \
   -H 'Content-Type: application/json' \
   -H 'Referer: https://www.tradingview.com/' \
@@ -77,11 +77,11 @@ curl -sS -X POST 'https://scanner.tradingview.com/brazil/scan' \
         "range": [0, 5]
       }'
 
-# 3 — Notícias por ativo (Yahoo)
+# 3 Notícias por ativo (Yahoo)
 curl -sS -H 'User-Agent: Mozilla/5.0' \
   'https://feeds.finance.yahoo.com/rss/2.0/headline?s=PETR3.SA&region=US&lang=en-US'
 
-# 4 — Notícias por ativo (Google News)
+# 4 Notícias por ativo (Google News)
 curl -sS 'https://news.google.com/rss/search?q=PETR3.SA+stock&hl=en-US&gl=US&ceid=US:en'
 ```
 
@@ -102,7 +102,7 @@ curl -sS 'https://news.google.com/rss/search?q=PETR3.SA+stock&hl=en-US&gl=US&cei
 | `GET /api/v1/admin/providers` | Saúde agregada dos provedores | Administrador |
 | `GET /api/v1/admin/provider-calls` | Auditoria paginada e filtrada | Administrador |
 
-`GET /api/health` é o **único** endpoint público além do login. Os dois widgets só respondem a quem tem sessão — ver seção 2.1.1.
+`GET /api/health` é o **único** endpoint público além do login. Os dois widgets só respondem a quem tem sessão ver seção 2.1.1.
 
 ### C. Mapa completo: botão da interface → sua rota → provedor
 
@@ -181,15 +181,15 @@ Os dois widgets **exigem sessão autenticada**. Um visitante sem sessão:
 
 A proteção deve estar no backend. Esconder o widget no frontend mantendo o endpoint aberto será tratado como ausência de autorização.
 
-> **Armadilha de projeto — leia antes de implementar o cache.**
+> **Armadilha de projeto leia antes de implementar o cache.**
 >
 > Autenticação controla **acesso**, não **particionamento de dados**. Os dados de mercado são idênticos para todos os usuários logados: o heatmap do `BR` é o mesmo para o usuário comum e para o administrador.
 >
-> Portanto o cache de provedor deve continuar **compartilhado entre todos os usuários** e chaveado por operação — `heatmap:br`, `news:PETR3.SA`, `news:global` — e **nunca** por `user_id` ou por identificador de sessão.
+> Portanto o cache de provedor deve continuar **compartilhado entre todos os usuários** e chaveado por operação `heatmap:br`, `news:PETR3.SA`, `news:global` e **nunca** por `user_id` ou por identificador de sessão.
 >
 > Chavear o cache por usuário multiplica as chamadas externas pelo número de pessoas logadas, anula a proteção da seção 5.2 e é o caminho mais curto para o deployment ser bloqueado pelos provedores. Esse erro será penalizado nos pontos de resiliência mesmo que a aplicação pareça funcionar.
 
-### 2.2 Widget 1 — Heatmap setorial
+### 2.2 Widget 1 Heatmap setorial
 
 Mapa de árvore (treemap) das maiores empresas listadas, agrupadas por setor.
 
@@ -208,7 +208,7 @@ Requisitos:
 
 O símbolo ativo selecionado no item 8 é o mesmo consumido pelo widget de notícias. Clicar em `PETR3.SA` no heatmap deve fazer o widget vizinho passar a exibir notícias de `PETR3.SA`, como mostram as Figuras 1 e 2.
 
-### 2.3 Widget 2 — Notícias por ativo
+### 2.3 Widget 2 Notícias por ativo
 
 Lista de manchetes com três modos, conforme os botões das Figuras 1 e 2:
 
@@ -222,7 +222,7 @@ Requisitos:
 
 1. no modo por ativo, mesclar duas fontes independentes e usar o símbolo ativo da aplicação como padrão;
 2. nos modos global e Brasil, mesclar duas consultas temáticas independentes e ignorar o símbolo ativo;
-3. deduplicar por título normalizado — minúsculas, não alfanuméricos colapsados em espaço, 80 primeiros caracteres;
+3. deduplicar por título normalizado minúsculas, não alfanuméricos colapsados em espaço, 80 primeiros caracteres;
 4. ordenar do mais recente para o mais antigo;
 5. limitar a 40 itens;
 6. exibir título, veículo e data/hora local;
@@ -269,7 +269,7 @@ O endpoint exige `Referer` e `Origin` plausíveis; sem eles a borda responde `40
 O scanner devolve o ticker puro (`PETR3`), mas a aplicação trabalha com a convenção do Yahoo (`PETR3.SA`), que é a usada no widget de notícias e visível nas Figuras 1 e 2. Portanto:
 
 1. acrescentar o sufixo `.SA` a todo ticker vindo do scanner brasileiro;
-2. descartar o mercado fracionário da B3 — tickers terminados em dígito seguido de `F`, por exemplo `PETR3F`, que o scanner devolve **antes** do ticker principal por aparecerem com o mesmo valor de mercado;
+2. descartar o mercado fracionário da B3 tickers terminados em dígito seguido de `F`, por exemplo `PETR3F`, que o scanner devolve **antes** do ticker principal por aparecerem com o mesmo valor de mercado;
 3. tratar a moeda como `BRL` e não converter para dólar.
 
 Sem o item 2, a maior célula do setor Energy Minerals aparece duplicada. Sem o item 1, clicar na célula do heatmap faz o widget de notícias consultar um símbolo que o Yahoo não resolve.
@@ -284,9 +284,9 @@ Sem o item 2, a maior célula do setor Energy Minerals aparece duplicada. Sem o 
 
 As consultas temáticas podem ser ajustadas, desde que cada modo use duas fontes independentes e o README documente as escolhas.
 
-> **Atenção:** estes provedores são instáveis por natureza. Durante a avaliação é esperado encontrar `429`, `403` e *timeout* — o Yahoo respondeu `429` durante a redação deste enunciado. Lidar com isso **é o teste**, não um imprevisto.
+> **Atenção:** estes provedores são instáveis por natureza. Durante a avaliação é esperado encontrar `429`, `403` e *timeout* o Yahoo respondeu `429` durante a redação deste enunciado. Lidar com isso **é o teste**, não um imprevisto.
 
-### 2.5 Fronteira de rede — regra arquitetural
+### 2.5 Fronteira de rede regra arquitetural
 
 ```text
 Navegador
@@ -360,16 +360,7 @@ Completar o fluxo vertical da aplicação:
 
 ---
 
-## 4. Prazo e formato da entrega
-
-- **Timebox máximo:** 16 horas, distribuídas em até 7 dias corridos.
-- Ao atingir 16 horas, o candidato deve interromper o desenvolvimento e registrar o que ficou incompleto.
-- Itens não concluídos perdem somente os pontos correspondentes; priorização e justificativas fazem parte da avaliação.
-- Entrega por repositório privado compartilhado com os avaliadores. Um Git bundle pode ser aceito como alternativa.
-- O histórico de commits deve ser preservado.
-- O README deve informar tempo efetivamente utilizado, decisões e simplificações, limitações conhecidas e próximos passos.
-
-O avaliador utilizará somente Git e Docker. A entrega deve funcionar a partir de um clone limpo, sem instalação local de PHP, Composer, Node.js ou banco de dados.
+## 4.Formato da entrega
 
 Fluxo mínimo de avaliação:
 
@@ -406,7 +397,7 @@ Sem esse material o desafio não deve ser iniciado: a suíte de testes precisa r
 
 A API é responsável por egressão de rede, normalização, cache, identidade, sessão, autorização e auditoria.
 
-PHP 8.3 ou superior. O framework é livre — Laravel, Symfony, Slim ou PSR-15 sem framework. A escolha deve ser justificada no README. O que será avaliado é a separação de camadas, não o framework.
+PHP 8.3 ou superior. O framework é livre Laravel, Symfony, Slim ou PSR-15 sem framework. A escolha deve ser justificada no README. O que será avaliado é a separação de camadas, não o framework.
 
 Contrato mínimo sugerido:
 
@@ -483,7 +474,7 @@ Motivo: uma mensagem global faz o operador investigar a infraestrutura inteira q
 | `/api/v1/news` | `region` | Opcional, allowlist `br`; mutuamente exclusivo com `symbol` |
 | `/api/v1/news` | `limit` | Opcional, inteiro de `1` a `40`, padrão `40` |
 
-O símbolo deve ser validado por allowlist estrita — letras maiúsculas, dígitos, ponto, hífen e circunflexo, até 12 caracteres — **antes** de ser interpolado em qualquer URL. A expressão de referência é `/^[A-Z0-9.^-]{1,12}$/`, que aceita `PETR3.SA`, `ABEV3.SA` e `AAPL` e rejeita qualquer outra coisa. Símbolo fora do padrão retorna `422` sem tocar a rede.
+O símbolo deve ser validado por allowlist estrita letras maiúsculas, dígitos, ponto, hífen e circunflexo, até 12 caracteres **antes** de ser interpolado em qualquer URL. A expressão de referência é `/^[A-Z0-9.^-]{1,12}$/`, que aceita `PETR3.SA`, `ABEV3.SA` e `AAPL` e rejeita qualquer outra coisa. Símbolo fora do padrão retorna `422` sem tocar a rede.
 
 Motivo: `symbol` entra na URL do provedor. Sem allowlist, o parâmetro vira vetor de SSRF e de injeção de parâmetros na consulta do terceiro.
 
@@ -1039,17 +1030,17 @@ Não é necessário:
 
 Bônus não compensam ausência dos requisitos fundamentais.
 
-- mercado `EU` do heatmap, com uma requisição por país e normalização cambial por adapter — até 3 pontos;
-- segundo provedor de heatmap com adapter intercambiável e fake nos testes — até 1 ponto;
-- disjuntor com meia-abertura e recuperação progressiva, com teste determinístico — até 2 pontos;
-- cache compartilhado entre réplicas, com invalidação documentada — até 1 ponto;
-- OpenAPI validado automaticamente — até 1 ponto;
-- teste de carga reproduzível sobre o cache — até 1 ponto;
-- métricas reais com OpenTelemetry ou Prometheus — até 2 pontos;
-- imagens executadas por usuário sem privilégios e com SBOM — até 1 ponto;
-- profile Docker Compose separado para observabilidade — até 1 ponto;
-- testes automatizados de acessibilidade — até 1 ponto;
-- demonstração de como estruturaria os widgets em Vue — até 1 ponto.
+- mercado `EU` do heatmap, com uma requisição por país e normalização cambial por adapter até 3 pontos;
+- segundo provedor de heatmap com adapter intercambiável e fake nos testes até 1 ponto;
+- disjuntor com meia-abertura e recuperação progressiva, com teste determinístico até 2 pontos;
+- cache compartilhado entre réplicas, com invalidação documentada até 1 ponto;
+- OpenAPI validado automaticamente até 1 ponto;
+- teste de carga reproduzível sobre o cache até 1 ponto;
+- métricas reais com OpenTelemetry ou Prometheus até 2 pontos;
+- imagens executadas por usuário sem privilégios e com SBOM até 1 ponto;
+- profile Docker Compose separado para observabilidade até 1 ponto;
+- testes automatizados de acessibilidade até 1 ponto;
+- demonstração de como estruturaria os widgets em Vue até 1 ponto.
 
 **Limite de bônus: 15 pontos. Nota final = `min(100, pontuação-base + bônus)`.**
 
@@ -1111,27 +1102,27 @@ Os limites são aplicados depois da soma da rubrica e dos bônus. O mesmo defeit
 
 Reservar de 45 a 60 minutos para:
 
-1. **Demonstração — 10 minutos**
+1. **Demonstração 10 minutos**
 
    O candidato executa os dois widgets e força um cenário de degradação.
 
-2. **Arquitetura e DDD — 10 minutos**
+2. **Arquitetura e DDD 10 minutos**
 
    Explica limites entre domínio, aplicação, infraestrutura e apresentação, e por que o domínio não conhece o parser.
 
-3. **Banco de dados — 8 minutos**
+3. **Banco de dados 8 minutos**
 
    Justifica chaves, índices, JSON, idempotência, paginação e diferenças entre MySQL e PostgreSQL.
 
-4. **Segurança — 10 minutos**
+4. **Segurança 10 minutos**
 
    Explica a defesa contra XXE, o saneamento de links e a fronteira de egressão.
 
-5. **Incidente — 10 minutos**
+5. **Incidente 10 minutos**
 
    Cenário: o heatmap ficou vazio para todos os usuários e a auditoria mostra aumento de `provider.failed` com `failure_code=rate_limited`. O candidato usa `request_id`, logs, health checks e SQL para diagnosticar e propor mitigação.
 
-6. **Docker e entrega — 7 minutos**
+6. **Docker e entrega 7 minutos**
 
    Explica build, inicialização, health checks, migrations e diagnóstico dos containers.
 
